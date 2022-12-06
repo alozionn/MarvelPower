@@ -1,7 +1,6 @@
-interface Card {
-  image: string
-  name: string
-  details: string
-}
+import type { Character } from './character'
 
-export type { Card }
+export interface Card {
+  image?: string
+  character: Character
+}
