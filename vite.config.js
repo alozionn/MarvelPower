@@ -4,11 +4,11 @@ import { resolve } from 'path'
 /** @type {import('vite').UserConfig} */
 const config = {
   plugins: [sveltekit()],
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src')
-    }
-  },
+  // resolve: {
+  //   alias: {
+  //     'src': resolve(__dirname, './src')
+  //   }
+  // },
   test: {
     include: ['src/**/*.{test,spec}.{js,ts}']
   }

@@ -22,10 +22,11 @@
     }
   }
   let loading = true
-  let characters: Character[] | [] = []
+  let characters: Character[] | []
 
   onMount(async () => {
     characters = await getCharacters()
+    console.log(characters)
     loading = false
   })
 </script>

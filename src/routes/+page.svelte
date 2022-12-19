@@ -1,5 +1,5 @@
 <script>
-  import CardList from '../components/CardList.svelte'
+  import CardList from 'src/components/CardList.svelte'
 </script>
 
 <div>
