@@ -2,7 +2,7 @@ export interface Character {
   name: string
   marvel_wiki: string
   marvel_api: string
-  power_grid: Power[]
+  power_grid: Power
 }
 
 export interface Power {

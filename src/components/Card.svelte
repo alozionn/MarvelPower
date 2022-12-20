@@ -30,7 +30,7 @@
 
   <div>
     {#if showPower}
-      <PowerLevels power={card.character.power_grid[0]} />
+      <PowerLevels power={card.character.power_grid} />
     {:else}
       <button
         class="w-1/2 p-2 rounded border border-primary hover:bg-primary text-primary hover:text-white focus:ring-4 focus:outline-non focus:ring-red-300"
