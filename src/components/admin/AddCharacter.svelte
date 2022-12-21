@@ -11,6 +11,7 @@
 
   const createCharacter = () => {
     console.log(character)
+    // TODO: POST CALL ON SUPABASE
   }
 </script>
 
