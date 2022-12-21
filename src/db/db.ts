@@ -18,7 +18,7 @@ export const getCharacters = async (): Promise<Character[] | []> => {
     })
 
     // return data
-    return newData //doing this because supabase returns an array of length 1 for that field instead of the object
+    return newData //doing this because supabase returns an array of length 1 for `power_grid` field instead of the object
   }
 
   return []
