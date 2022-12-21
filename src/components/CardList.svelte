@@ -5,22 +5,6 @@
   import CardSkeleton from './CardSkeleton.svelte'
   import type { Character } from '../interfaces/character'
 
-  const characterCard = {
-    image: 'https://upload.wikimedia.org/wikipedia/en/2/21/Web_of_Spider-Man_Vol_1_129-1.png',
-    character: {
-      name: 'Spider-Man',
-      marvel_wiki: '',
-      marvel_api: '',
-      power: {
-        intelligence: 4,
-        strength: 4,
-        speed: 3,
-        durability: 3,
-        energy: 1,
-        fighting: 4
-      }
-    }
-  }
   let loading = true
   let characters: Character[] | []
 

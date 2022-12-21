@@ -2,10 +2,10 @@ export interface Character {
   name: string
   marvel_wiki: string
   marvel_api: string
-  power_grid: Power
+  power_grid: PowerGrid
 }
 
-export interface Power {
+export interface PowerGrid {
   intelligence: number
   strength: number
   speed: number
@@ -15,10 +15,10 @@ export interface Power {
 }
 
 export interface AccessPower {
-  INTELLIGENCE: keyof Power
-  STRENGTH: keyof Power
-  SPEED: keyof Power
-  DURABILITY: keyof Power
-  ENERGY: keyof Power
-  FIGHTING: keyof Power
+  INTELLIGENCE: keyof PowerGrid
+  STRENGTH: keyof PowerGrid
+  SPEED: keyof PowerGrid
+  DURABILITY: keyof PowerGrid
+  ENERGY: keyof PowerGrid
+  FIGHTING: keyof PowerGrid
 }
