@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
-import type { Character } from 'src/interfaces/character'
+import type { Character, PowerGrid } from 'src/interfaces/character'
+import { SUCCESS } from 'src/utils/constants/status-strings'
 
 const supabaseUrl = 'https://fhozeyrrbphnuspfkzia.supabase.co'
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY
@@ -21,4 +22,33 @@ export const getCharacters = async (): Promise<Character[] | []> => {
   }
 
   return []
+}
+
+export const addCharacter = async (character: Character): Promise<number | null> => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { power_grid, ...onlyCharacter } = character
+
+  const { data, error } = await supabase
+    .from('characters')
+    .insert({ ...onlyCharacter })
+    .select()
+
+  if (error) console.log(error)
+  if (data) {
+    return data[0].id
+  }
+  return null
+}
+
+export const addCharacterPowerGrid = async (
+  characterId: number,
+  powerGrid: PowerGrid
+): Promise<string | null> => {
+  const { data, error } = await supabase
+    .from('power_grid')
+    .insert({ ...powerGrid, character_id: characterId })
+
+  if (error) console.log(error)
+  if (data) return SUCCESS.ADDED
+  return null
 }

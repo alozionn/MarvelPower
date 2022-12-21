@@ -1,6 +1,9 @@
 <script lang="ts">
+  import { addCharacter, addCharacterPowerGrid } from 'src/db/db'
   import type { Character } from 'src/interfaces/character'
   import { addCharacterStore } from 'src/stores/admin/forms/add-character-store'
+  import { notifications } from 'src/stores/core/notifications-store'
+  import Toast from 'src/components/core/Toast.svelte'
   import PowerLevelRanges from './forms/PowerLevelRanges.svelte'
 
   let character: Character
@@ -9,12 +12,15 @@
     character = value
   })
 
-  const createCharacter = () => {
-    console.log(character)
-    // TODO: POST CALL ON SUPABASE
+  const createCharacter = async () => {
+    //TODO: Handle error states for each call
+    const characterId = await addCharacter(character)
+    if (characterId) await addCharacterPowerGrid(characterId, character.power_grid)
+    notifications.success('Character Added', 3000)
   }
 </script>
 
+<Toast />
 <section class="bg-white dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a new character</h2>
