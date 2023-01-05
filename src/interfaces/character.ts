@@ -1,4 +1,5 @@
 export interface Character {
+  id?: number
   name: string
   marvel_wiki: string
   marvel_api: string

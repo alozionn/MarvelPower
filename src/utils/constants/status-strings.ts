@@ -1,3 +1,4 @@
 export const SUCCESS = {
-  ADDED: 'added succesfuly'
+  ADDED: 'added succesfuly',
+  DELETED: 'deleted succesfuly'
 }

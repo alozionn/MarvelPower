@@ -52,3 +52,16 @@ export const addCharacterPowerGrid = async (
   if (data) return SUCCESS.ADDED
   return null
 }
+
+//INFO: CASCADE DELETE NOT ENABLED
+export const deleteCharacterDB = async (characterId: number) => {
+  const { data, error } = await supabase.from('power_grid').delete().eq('character_id', characterId)
+
+  if (!error) {
+    const { data, error } = await supabase.from('characters').delete().eq('id', characterId)
+    if (data) {
+      return SUCCESS.DELETED
+    }
+  }
+  return null
+}
