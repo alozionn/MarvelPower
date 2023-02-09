@@ -6,20 +6,17 @@ export interface Character {
   power_grid: PowerGrid
 }
 
-export interface PowerGrid {
+export interface PowerGrid extends Powers {
+  id?: number
+  character_id?: number
+  created_at?: string
+}
+
+export interface Powers {
   intelligence: number
   strength: number
   speed: number
   durability: number
   energy: number
   fighting: number
-}
-
-export interface AccessPower {
-  INTELLIGENCE: keyof PowerGrid
-  STRENGTH: keyof PowerGrid
-  SPEED: keyof PowerGrid
-  DURABILITY: keyof PowerGrid
-  ENERGY: keyof PowerGrid
-  FIGHTING: keyof PowerGrid
 }

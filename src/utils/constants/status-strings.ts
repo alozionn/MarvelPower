@@ -1,4 +1,4 @@
-export const SUCCESS = {
-  ADDED: 'added succesfuly',
-  DELETED: 'deleted succesfuly'
+export enum SUCCESS {
+  ADDED = 'added succesfuly',
+  DELETED = 'deleted succesfuly'
 }

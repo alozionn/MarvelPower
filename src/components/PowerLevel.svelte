@@ -1,7 +1,7 @@
 <script lang="ts">
   import { MAX_POWER_LEVEL } from '../utils/constants/power'
 
-  export let powerLevel: number, powerName: string
+  export let powerName: string, powerLevel: number
 </script>
 
 <div class="mb-1 text-base font-medium text-blue-700 dark:text-blue-500">

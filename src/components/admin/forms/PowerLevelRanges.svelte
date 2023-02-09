@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { POWER_GRID } from 'src/utils/constants/power'
+  import type { PowerGrid } from 'src/interfaces/character'
   import PowerLevelRange from './PowerLevelRange.svelte'
+
+  export let powerGrid: PowerGrid
 </script>
 
-<PowerLevelRange powerName={POWER_GRID.INTELLIGENCE} />
-<PowerLevelRange powerName={POWER_GRID.STRENGTH} />
-<PowerLevelRange powerName={POWER_GRID.SPEED} />
-<PowerLevelRange powerName={POWER_GRID.DURABILITY} />
-<PowerLevelRange powerName={POWER_GRID.ENERGY} />
-<PowerLevelRange powerName={POWER_GRID.FIGHTING} />
+{#each Object.entries(powerGrid) as [powerName]}
+  <PowerLevelRange {powerName} />
+{/each}

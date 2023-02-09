@@ -14,9 +14,10 @@
 
   const createCharacter = async () => {
     //TODO: Handle error states for each call
-    const characterId = await addCharacter(character)
-    if (characterId) await addCharacterPowerGrid(characterId, character.power_grid)
-    notifications.success('Character Added', 3000)
+    // const characterId = await addCharacter(character)
+    // if (characterId) await addCharacterPowerGrid(characterId, character.power_grid)
+    // notifications.success('Character Added', 3000)
+    console.log(character)
   }
 </script>
 
@@ -68,7 +69,7 @@
           />
         </div>
         <div class="sm:col-span-2">
-          <PowerLevelRanges />
+          <PowerLevelRanges powerGrid={character.power_grid} />
         </div>
       </div>
       <button
