@@ -1,6 +1,6 @@
 <script lang="ts">
   import ConfirmModal from 'src/components/core/ConfirmModal.svelte'
-  import { deleteCharacterDB, getCharacters } from 'src/db/db'
+  import { deleteCharacter, getCharacters } from 'src/db/db'
   import type { Character } from 'src/interfaces/character'
   import { onMount } from 'svelte'
   import CharacterListitem from './CharacterListitem.svelte'
@@ -17,9 +17,9 @@
     loading = false
   })
 
-  const deleteCharacter = async () => {
+  const deleteAction = async () => {
     console.log('delete THIS', deleteId)
-    await deleteCharacterDB(deleteId)
+    await deleteCharacter(deleteId)
     characters = await getCharacters()
     hideModal()
   }
@@ -69,8 +69,4 @@
   </table>
 </div>
 
-<ConfirmModal
-  visible={modalVisible}
-  confirmCallback={deleteCharacter}
-  declineCallback={hideModal}
-/>
+<ConfirmModal visible={modalVisible} confirmCallback={deleteAction} declineCallback={hideModal} />
