@@ -14,10 +14,9 @@
 
   const createCharacter = async () => {
     //TODO: Handle error states for each call
-    // const characterId = await addCharacter(character)
-    // if (characterId) await addCharacterPowerGrid(characterId, character.power_grid)
-    // notifications.success('Character Added', 3000)
-    console.log(character)
+    const characterId = await addCharacter(character)
+    if (characterId) await addCharacterPowerGrid(characterId, character.power_grid)
+    notifications.success('Character Added', 3000)
   }
 </script>
 
