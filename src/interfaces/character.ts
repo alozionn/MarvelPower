@@ -1,9 +1,10 @@
-export interface Character {
-  id?: number
-  name: string
-  marvel_wiki: string
-  marvel_api: string
-  power_grid: PowerGrid
+export interface Powers {
+  intelligence: number
+  strength: number
+  speed: number
+  durability: number
+  energy: number
+  fighting: number
 }
 
 export interface PowerGrid extends Powers {
@@ -12,11 +13,10 @@ export interface PowerGrid extends Powers {
   created_at?: string
 }
 
-export interface Powers {
-  intelligence: number
-  strength: number
-  speed: number
-  durability: number
-  energy: number
-  fighting: number
+export interface Character {
+  id?: number
+  name: string
+  marvel_wiki: string
+  marvel_api: string
+  power_grid: PowerGrid
 }
