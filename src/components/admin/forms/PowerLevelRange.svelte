@@ -1,25 +1,28 @@
 <script lang="ts">
   import { MAX_POWER_LEVEL } from 'src/utils/constants/power'
-  import { addCharacterStore } from 'src/stores/admin/forms/add-character-store'
+  import { character } from 'src/stores/admin/forms/add-character-store'
   import type { Powers } from 'src/interfaces/character'
+  import { onDestroy } from 'svelte'
 
   export let powerName: string
   let powerLevel: number
 
-  const unsubscribe = addCharacterStore.subscribe((value) => {
+  const unsubscribe = character.subscribe((value) => {
     let pn = powerName as keyof Powers
     powerLevel = value.power_grid[pn]
   })
 
   function rangeChange(event: Event) {
     const target = event.target as HTMLInputElement
-    addCharacterStore.update((character) => {
+    character.update((characterData) => {
       return {
-        ...character,
-        power_grid: { ...character.power_grid, [powerName]: parseInt(target.value) }
+        ...characterData,
+        power_grid: { ...characterData.power_grid, [powerName]: parseInt(target.value) }
       }
     })
   }
+
+  onDestroy(unsubscribe)
 </script>
 
 <label for="minmax-range" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">

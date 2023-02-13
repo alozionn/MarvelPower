@@ -1,21 +1,14 @@
 <script lang="ts">
   import { addCharacter, addCharacterPowerGrid } from 'src/db/db'
-  import type { Character } from 'src/interfaces/character'
-  import { addCharacterStore } from 'src/stores/admin/forms/add-character-store'
+  import { character } from 'src/stores/admin/forms/add-character-store'
   import { notifications } from 'src/stores/core/notifications-store'
   import Toast from 'src/components/core/Toast.svelte'
   import PowerLevelRanges from './forms/PowerLevelRanges.svelte'
 
-  let character: Character
-
-  const unsubscribe = addCharacterStore.subscribe((value) => {
-    character = value
-  })
-
   const createCharacter = async () => {
     //TODO: Handle error states for each call
-    const characterId = await addCharacter(character)
-    if (characterId) await addCharacterPowerGrid(characterId, character.power_grid)
+    const characterId = await addCharacter($character)
+    if (characterId) await addCharacterPowerGrid(characterId, $character.power_grid)
     notifications.success('Character Added', 3000)
   }
 </script>
@@ -31,7 +24,7 @@
             >Character Name</label
           >
           <input
-            bind:value={character.name}
+            bind:value={$character.name}
             type="text"
             name="name"
             id="name"
@@ -44,7 +37,7 @@
             >Wiki URL</label
           >
           <input
-            bind:value={character.marvel_wiki}
+            bind:value={$character.marvel_wiki}
             type="text"
             name="wiki_url"
             id="wiki_url"
@@ -59,7 +52,7 @@
             >Marvel API URL</label
           >
           <input
-            bind:value={character.marvel_api}
+            bind:value={$character.marvel_api}
             type="text"
             name="marvel_api"
             id="marvel_api"
@@ -68,7 +61,7 @@
           />
         </div>
         <div class="sm:col-span-2">
-          <PowerLevelRanges powerGrid={character.power_grid} />
+          <PowerLevelRanges powerGrid={$character.power_grid} />
         </div>
       </div>
       <button
