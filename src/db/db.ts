@@ -33,7 +33,9 @@ export const addCharacter = async (character: Character): Promise<number | null>
     .insert({ ...onlyCharacter })
     .select()
 
-  if (error) console.log(error)
+  if (error) {
+    throw error
+  }
   if (data) {
     return data[0].id
   }
